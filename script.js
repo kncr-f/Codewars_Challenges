@@ -105,3 +105,28 @@ function spinWords2(words) {
         return (word.length > 4) ? word.split("").reverse().join("") : word;
     }).join(" ");
 }
+
+// 6 kyu Sum of Digits / Digital Root
+// Digital root is the recursive sum of all the digits in a number.
+// Given n, take the sum of the digits of n.If that value has more than one digit, continue reducing in this way until a single - digit number is produced.The input will be a non - negative integer.
+
+// Solution 1
+
+function digital_root(n) {
+
+    var arr = Array.from(n.toString())
+    var result = arr.map(Number).reduce((a, b) => a + b, 0)
+    if (arr.length == 1) {
+        return result
+    } else {
+        return digital_root(result)
+
+    }
+
+}
+
+// Solution 2
+
+function digital_root(n) {
+    return (n - 1) % 9 + 1;
+}
