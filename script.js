@@ -68,3 +68,40 @@ function solution(number) {
     }
     return sum;
 }
+
+//6kyu Stop gninnnipS My sdroW
+// Write a function that takes in a string of one or more words, 
+// and returns the same string, but with all five or more letter words 
+// reversed(Just like the name of this Kata).Strings passed in 
+// will consist of only letters and spaces.Spaces will be included only when more than one word is present.
+
+//     Examples: spinWords("Hey fellow warriors") => returns "Hey wollef sroirraw" spinWords("This is a test") => returns "This is a test" spinWords("This is another test")=> returns "This is rehtona test"
+
+// Solution 1
+function spinWords(string) {
+    let myString = string.split(" ");
+    let myArr = []
+
+    for (let i = 0; i < myString.length; i++) {
+
+        if (myString[i].length >= 5) {
+            let a = myString[i].split("").reverse().join("");
+            myArr.push(a)
+
+        } else {
+            let b = myString[i].split("").join("");
+            myArr.push(b)
+
+        }
+    }
+    let result = myArr.join(" ").toString();
+    return result
+}
+
+// Solution 2
+
+function spinWords2(words) {
+    return words.split(" ").map((word) => {
+        return (word.length > 4) ? word.split("").reverse().join("") : word;
+    }).join(" ");
+}
