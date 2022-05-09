@@ -166,3 +166,49 @@ function arrayDiff(a, b) {
     }
     return a
 }
+
+// 6kyu Where is my parent!?(cry)
+// Mothers arranged a dance party for the children in school.At that party, there are only mothers and their children.All are having great fun on the dance floor when suddenly all the lights went out.It's a dark night and no one can see each other. But you were flying nearby and you can see in the dark and have ability to teleport people anywhere you want.
+
+// Legend:
+// -Uppercase letters stands for mothers, lowercase stand for their children, i.e. "A" mother's children are "aaaa".
+//     - Function input: String contains only letters, uppercase letters are unique.
+//         Task:
+// Place all people in alphabetical order where Mothers are followed by their children, i.e. "aAbaBb" => "AaaBbb".
+
+// Solution
+
+function findChildren(str) {
+    return str.split("").sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()) || b.localeCompare(a)).join("");
+
+}
+
+
+
+// &kyu Who likes it ?
+
+//     You probably know the "like" system from Facebook and other pages.People can "like" blog posts, pictures or other items.We want to create the text that should be displayed next to such an item.
+
+// Implement the function which takes an array containing the names of people that like an item.It must return the display text as shown in the examples:
+
+// []-- > "no one likes this"
+// ["Peter"]-- > "Peter likes this"
+// ["Jacob", "Alex"]-- > "Jacob and Alex like this"
+// ["Max", "John", "Mark"]-- > "Max, John and Mark like this"
+// ["Alex", "Jacob", "Mark", "Max"]-- > "Alex, Jacob and 2 others like this"
+
+// Solution
+
+function likes(names) {
+    if (!names.length) {
+        return 'no one likes this';
+    } else if (names.length === 1) {
+        return `${names[0]} likes this`;
+    } else if (names.length === 2) {
+        return `${names[0]} and ${names[1]} like this`;
+    } else if (names.length === 3) {
+        return `${names[0]}, ${names[1]} and ${names[2]} like this`;
+    } else if (names.length > 3) {
+        return `${names[0]}, ${names[1]} and ${names.length - 2} others like this`;
+    }
+}
