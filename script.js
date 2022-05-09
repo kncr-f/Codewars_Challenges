@@ -130,3 +130,39 @@ function digital_root(n) {
 function digital_root(n) {
     return (n - 1) % 9 + 1;
 }
+
+//6kyu Array.diff
+// Your goal in this kata is to implement a difference function, which subtracts one list from another and returns the result.
+
+// It should remove all values from list a, which are present in list b keeping their order.
+
+//     arrayDiff([1, 2], [1]) == [2]
+// If a value is present in b, all of its occurrences must be removed from the other:
+
+// arrayDiff([1, 2, 2, 2, 3], [2]) == [1, 3]
+
+//Solution 1
+function arrDiff(a, b) {
+    return a.filter(item => !b.includes(item))
+
+}
+
+//Solution 2
+function arrayDiff(a, b) {
+    let myArr = [];
+    for (let i = 0; i < a.length; i++) {
+        for (j = 0; j < b.length; j++) {
+            if (a[i] == b[j]) {
+                myArr.push(a[i])
+            }
+        }
+    }
+
+    for (let k = 0; k < myArr.length; k++) {
+        if (a.includes(myArr[k])) {
+            var myIndex = a.indexOf(myArr[k])
+            a.splice(myIndex, 1)
+        }
+    }
+    return a
+}
