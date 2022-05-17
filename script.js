@@ -426,3 +426,33 @@ function persistence(num) {
     }, 1);
     return 1 + persistence(multi);
 }
+
+
+// 6kyu Replace With Alphabet Position
+
+// In this kata you are required to, given a string, replace every letter with its position in the alphabet.
+
+// If anything in the text isn't a letter, ignore it and don't return it.
+
+// "a" = 1, "b" = 2, etc.
+
+// Solution
+
+function alphabetPosition(text) {
+    let alphabet = "abcdefghijklmnopqrstuvwxyz";
+    let alpIndex = [];
+
+    text = text.toLowerCase();
+
+    for (let i = 0; i < text.length; i++) {
+        let index = alphabet.indexOf(text[i]);
+
+        if (index === -1) {
+            continue;
+        } else {
+            alpIndex.push(index + 1);
+        }
+    }
+
+    return alpIndex.join(" ");
+}
