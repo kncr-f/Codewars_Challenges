@@ -80,22 +80,14 @@ function solution(number) {
 // Solution 1
 function spinWords(string) {
     let myString = string.split(" ");
-    let myArr = []
+    let myArr = [];
 
     for (let i = 0; i < myString.length; i++) {
-
-        if (myString[i].length >= 5) {
-            let a = myString[i].split("").reverse().join("");
-            myArr.push(a)
-
-        } else {
-            let b = myString[i].split("").join("");
-            myArr.push(b)
-
-        }
+        myString[i].length >= 5 ?
+            myArr.push(myString[i].split("").reverse().join("")) :
+            myArr.push(myString[i]);
     }
-    let result = myArr.join(" ").toString();
-    return result
+    return myArr.join(" ").toString();
 }
 
 // Solution 2
@@ -455,4 +447,30 @@ function alphabetPosition(text) {
     }
 
     return alpIndex.join(" ");
+}
+
+
+
+//6kyu Your order, please
+
+// Your task is to sort a given string.Each word in the string will contain a single number.This number is the position the word should have in the result.
+
+//     Note: Numbers can be from 1 to 9. So 1 will be the first word(not 0).
+
+// If the input string is empty, return an empty string.The words in the input String will only contain valid consecutive numbers.
+
+//     Examples
+// "is2 Thi1s T4est 3a"  -- > "Thi1s is2 3a T4est"
+// "4of Fo1r pe6ople g3ood th5e the2"  -- > "Fo1r the2 g3ood 4of th5e pe6ople"
+// ""  -- > ""
+
+// Solution
+function order(words) {
+    let arr = words.split(" ");
+
+    let result = arr.sort((a, b) => {
+        return a.match(/\d/) - b.match(/\d/);
+    })
+    return result.join(" ")
+
 }
