@@ -474,3 +474,21 @@ function order(words) {
     return result.join(" ")
 
 }
+
+// 6kyu Tribonacci Sequence
+
+// As the name may already reveal, it works basically like a Fibonacci, but summing the last 3(instead of 2) numbers of the sequence to generate the next.
+
+// So, if we are to start our Tribonacci sequence with [1, 1, 1] as a starting input(AKA signature), we have this sequence:
+
+// [1, 1, 1, 3, 5, 9, 17, 31, ...]
+
+// Solution
+
+function tribonacci(s, n) {
+    var arr = [];
+    for (var i = 0; i < n; i++) {
+        arr.push((i < 3) ? s[i] : arr[i - 1] + arr[i - 2] + arr[i - 3]);
+    }
+    return arr;
+}
