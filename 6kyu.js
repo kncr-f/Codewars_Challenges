@@ -695,3 +695,26 @@ function findEvenIndex(arr) {
     }
     return -1
 }
+
+// 6kyu Convert string to camel case
+
+// Complete the method / function so that it converts dash / underscore delimited words into camel casing.The first word within the output should be capitalized only if the original word was capitalized(known as Upper Camel Case, also often referred to as Pascal case).
+
+//     Examples
+// "the-stealth-warrior" gets converted to "theStealthWarrior"
+// "The_Stealth_Warrior" gets converted to "TheStealthWarrior"
+
+
+// Solution 
+function toCamelCase(str) {
+
+    if (str.charAt(0) === str.charAt(0).toUpperCase()) {
+        let rest = str.replace(str.charAt(0), "").toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase())
+        return str.charAt(0).concat(rest)
+
+    }
+
+    return str.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase());
+}
+
+
