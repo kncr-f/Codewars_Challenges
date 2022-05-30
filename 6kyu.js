@@ -948,3 +948,50 @@ function deleteNth(arr, n) {
     return filteredArr
 }
 
+
+// 6kyu Highest Scoring Word
+
+// Given a string of words, you need to find the highest scoring word.
+
+// Each letter of a word scores points according to its position in the alphabet: a = 1, b = 2, c = 3 etc.
+
+// You need to return the highest scoring word as a string.
+
+// If two words score the same, return the word that appears earliest in the original string.
+
+// All letters will be lowercase and all inputs will be valid.
+
+// Solution
+
+function high(str) {
+    let alphabet = "abcdefghijklmnopqrstuvwxyz";
+    let words = str.split(" ")
+    let alphabetArr = alphabet.split("");
+
+    count = 0;
+    let myObj = {}
+    for (let i = 0; i < alphabetArr.length; i++) {
+        count++
+        alphabetArr[i]
+        if (!myObj[alphabetArr[i]]) {
+            myObj[alphabetArr[i]] = count
+        }
+    }
+
+    let myArr = []
+    for (let k = 0; k < words.length; k++) {
+        let sum = 0;
+        for (let i = 0; i < words[k].length; i++) {
+            for (prop in myObj) {
+                if (words[k][i] === prop) {
+                    sum += myObj[prop]
+                }
+            }
+        }
+        myArr.push(sum)
+    }
+    const indexOfMaxValue = myArr.reduce((iMax, x, i, arr) => x > arr[iMax] ? i : iMax, 0);
+    return words[indexOfMaxValue]
+
+
+}
