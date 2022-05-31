@@ -1130,3 +1130,30 @@ function longestConsec(strarr, k) {
     return longString
 
 }
+
+
+// 6kyu Are the Array same?
+
+// Solution 1
+const comp = (a, b) => {
+    if (!a || !b || a.length !== b.length) return false;
+
+    return a.map(item => item * item).sort().toString() === b.sort().toString()
+
+}
+
+// Solution 2
+
+const compare = (a, b) => {
+    if (!a || !b || a.length !== b.length) return false;
+    let myArr = [];
+    for (let i = 0; i < a.length; i++) {
+        console.log(Math.pow(a[i], 2))
+        if (b.includes(Math.pow(a[i], 2))) {
+            myArr.push(Math.pow(a[i], 2))
+        }
+    }
+    console.log(myArr)
+    return myArr.sort().toString() === b.sort().toString()
+}
+
