@@ -1074,3 +1074,19 @@ function validBraces(braces) {
     }
     return countArr.length === 0
 }
+
+// 6kyu Is a number prime
+
+// Define a function that takes an integer argument and returns a logical value true or false depending on if the integer is a prime.
+
+// Per Wikipedia, a prime number(or a prime) is a natural number greater than 1 that has no positive divisors other than 1 and itself.
+
+// Solution
+function isPrime(num) {
+    for (let i = 2, s = Math.sqrt(num); i <= s; i++) {
+        if (num % i === 0) {
+            return false
+        }
+    }
+    return num > 1;
+}
