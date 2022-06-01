@@ -1200,3 +1200,51 @@ const expandedForm = n => n.toString()
     .filter(a => a > 0)
     .reverse()
     .join(" + ");
+
+
+// 6kyu Which are in?
+
+// Given two arrays of strings a1 and a2 return a sorted array r in lexicographical order of the strings of a1 which are substrings of strings of a2.
+
+//     Example 1:
+// a1 = ["arp", "live", "strong"]
+// a2 = ["lively", "alive", "harp", "sharp", "armstrong"]
+// returns["arp", "live", "strong"]
+
+// Example 2:
+// a1 = ["tarp", "mice", "bull"]
+// a2 = ["lively", "alive", "harp", "sharp", "armstrong"]
+// returns[]
+
+// Solution 1
+
+function inArray(arr1, arr2) {
+
+    let result = []
+    loop: for (let i = 0; i < arr1.length; i++) {
+        for (let j = 0; j < arr2.length; j++) {
+            if (arr2[j].includes(arr1[i])) {
+                result.push(arr1[i])
+                continue loop
+            }
+        }
+    }
+    return result.sort()
+}
+
+// Solution 2
+
+function inArray2(arr1, arr2) {
+    return arr1.filter(arr1Item => {
+        return arr2.some(arr2Item => {
+            return arr2Item.indexOf(arr1Item) > -1
+        })
+    }).sort()
+}
+
+
+// Solution 3
+
+function inArray3(arr1, arr2) {
+    return arr1.filter(arr1Item => arr2.find(arr2Item => arr2Item.match(arr1Item)))
+}
