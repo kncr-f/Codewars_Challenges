@@ -1332,7 +1332,7 @@ function queueTime(arr, n) {
 // Example
 // wave("hello") => ["Hello", "hEllo", "heLlo", "helLo", "hellO"]
 
-// Solution
+// Solution 
 
 function wave(str) {
     let arr = []
@@ -1346,3 +1346,19 @@ function wave(str) {
     }
     return arr
 }
+
+// Solution 2
+
+function wave2(str) {
+    let arr = [];
+    for (let i = 0; i < str.length; i++) {
+        let strArr = str.split('');
+        console.log(copy)
+        if (strArr[i] !== ' ') {
+            strArr[i] = strArr[i].toUpperCase()
+            arr.push(strArr.join(''))
+        }
+    }
+    return arr
+}
+wave2("hello")
