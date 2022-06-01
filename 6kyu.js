@@ -1157,3 +1157,38 @@ const compare = (a, b) => {
     return myArr.sort().toString() === b.sort().toString()
 }
 
+
+// 6kyu Write Number in Expanded Form
+
+// You will be given a number and you will need to return it as a string in Expanded Form.For example:
+// expandedForm(12); // Should return '10 + 2'
+// expandedForm(42); // Should return '40 + 2'
+// expandedForm(70304); // Should return '70000 + 300 + 4'
+
+// Solution
+
+function expandedForm(num) {
+    let numToArr = Array.from(num.toString()).map(Number);
+    if (numToArr.length === 1) {
+        return num.toString()
+    }
+
+    let arr = []
+    let sum = 0;
+
+    for (let i = 1; i < num; i = i * 10) {
+        for (let j = 0; j < numToArr.length; j++) {
+            sum = numToArr[j] * i
+            arr.push(sum)
+        }
+    }
+    let resultArr = []
+    for (let i = (numToArr.length - 1); i < arr.length - 1; i += (numToArr.length - 1)) {
+        resultArr.push(arr[i])
+    }
+
+    const result = resultArr.map(item => item += "+").reverse().join("").slice(0, -1).replace(/\+0/g, "")
+    return result.replace(/\+/g, " + ")
+
+
+}
