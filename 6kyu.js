@@ -1165,7 +1165,7 @@ const compare = (a, b) => {
 // expandedForm(42); // Should return '40 + 2'
 // expandedForm(70304); // Should return '70000 + 300 + 4'
 
-// Solution
+// Solution 1
 
 function expandedForm(num) {
     let numToArr = Array.from(num.toString()).map(Number);
@@ -1189,6 +1189,14 @@ function expandedForm(num) {
 
     const result = resultArr.map(item => item += "+").reverse().join("").slice(0, -1).replace(/\+0/g, "")
     return result.replace(/\+/g, " + ")
-
-
 }
+
+// Solution 2
+
+const expandedForm = n => n.toString()
+    .split("")
+    .reverse()
+    .map((a, i) => a * Math.pow(10, i))
+    .filter(a => a > 0)
+    .reverse()
+    .join(" + ");
