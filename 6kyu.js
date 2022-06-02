@@ -1362,3 +1362,25 @@ function wave2(str) {
     return arr
 }
 wave2("hello")
+
+// 6kyu Break camelCase
+
+// Complete the solution so that the function will break up camel casing, using a space between words.
+
+//     Example
+// "camelCasing"  => "camel Casing"
+// "identifier"   => "identifier"
+// ""             => ""
+
+// Solution
+
+function solution(str) {
+    if (str === "") {
+        return ""
+    }
+    if (str === str.toLowerCase()) {
+        return str
+    }
+
+    return str.replace(/([A-Z])/g, " $1");
+}
