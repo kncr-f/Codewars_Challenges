@@ -24,4 +24,28 @@ function validParentheses(parens) {
     }
 }
 
+// 5kyu Simple Pig Latin
+
+// Move the first letter of each word to the end of it, then add "ay" to the end of the word.Leave punctuation marks untouched.
+
+//     Examples
+// pigIt('Pig latin is cool'); // igPay atinlay siay oolcay
+// pigIt('Hello world !');     // elloHay orldway !
+
+// Solution
+
+function pigIt(str) {
+    let arr = []
+    str.split(" ").forEach((item) => {
+
+        if (item.match(/[A-z]/i)) {
+            arr.push(item.match(/[A-z]/i).input.slice(1).concat(item.charAt(0)).concat("ay"))
+        } else {
+            arr.push(item)
+        }
+
+    })
+    return arr.join(" ")
+}
+
 
