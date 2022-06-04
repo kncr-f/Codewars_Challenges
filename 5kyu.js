@@ -70,4 +70,55 @@ function moveZeros(array) {
     return array
 }
 
+// 5kyu Human Readable Time
+
+// Write a function, which takes a non - negative integer(seconds) as input and returns the time in a human - readable format(HH: MM: SS)
+
+// HH = hours, padded to 2 digits, range: 00 - 99
+// MM = minutes, padded to 2 digits, range: 00 - 59
+// SS = seconds, padded to 2 digits, range: 00 - 59
+// The maximum time never exceeds 359999(99: 59: 59)
+
+// Solution
+
+function numToStr(num) {
+    let str = num.toString()
+    if (num < 10) {
+        return str = "0" + num
+    }
+    return str
+}
+
+function humanReadable(s) {
+    let x, y, z = 0;
+    if (s < 60) {
+        z = s
+        z = numToStr(z)
+        y = "00"
+        x = "00"
+
+    } else if (60 <= s && s < 3600) {
+        x = "00"
+        y = Math.floor(s / 60);
+        y = numToStr(y)
+        z = s % 60;
+        z = numToStr(z)
+
+    } else if (3600 <= s && s <= 359999) {
+        x = Math.floor(s / 3600);
+        x = numToStr(x)
+
+        y = Math.floor((s % 3600) / 60);
+        y = numToStr(y)
+
+        z = (s % 3600) % 60;
+        z = numToStr(z)
+
+    }
+
+    let hour = x.concat(":").concat(y).concat(":").concat(z)
+
+    return hour
+}
+
 
