@@ -251,3 +251,49 @@ function componentToHex(c) {
 function rgb(r, g, b) {
     return componentToHex(r) + componentToHex(g) + componentToHex(b);
 }
+
+// 5kyu Rot13
+
+// ROT13 is a simple letter substitution cipher that replaces a letter with the letter 13 letters after it in the alphabet.ROT13 is an example of the Caesar cipher.
+
+// Create a function that takes a string and returns the string ciphered with Rot13.If there are numbers or special characters included in the string, they should be returned as they are.Only letters from the latin / english alphabet should be shifted, like in the original Rot13 "implementation".
+
+// Solution
+
+function rot13(message) {
+    alphabets = 'abcdefghijklmnopqrstuvwxyz'.split("");
+    let arr = []
+    for (let i = 0; i < message.length; i++) {
+
+        let res = /^[a-zA-Z]+$/.test(message[i])
+        if (!res) {
+            arr.push(message[i])
+        }
+
+        for (let j = 0; j < alphabets.length; j++) {
+            if (message[i] === message[i].toUpperCase()) {
+                let lowerCase = message[i].toLowerCase()
+                if (lowerCase == alphabets[j]) {
+
+                    let indx = j;
+                    if (indx < 13) {
+                        arr.push(alphabets[indx + 13].toUpperCase())
+                    } else {
+                        arr.push(alphabets[indx - 13].toUpperCase())
+                    }
+                }
+
+            }
+            if (message[i] == alphabets[j]) {
+
+                let indx = j;
+                if (indx < 13) {
+                    arr.push(alphabets[indx + 13])
+                } else {
+                    arr.push(alphabets[indx - 13])
+                }
+            }
+        }
+    }
+    return arr.join("")
+}
