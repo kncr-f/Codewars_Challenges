@@ -404,3 +404,23 @@ function productFib(prod) {
 
 }
 
+// Solution 2
+
+function productFib(prod) {
+    var n = 0;
+    var nPlus = 1;
+    while (n * nPlus < prod) {
+        nPlus = n + nPlus;
+        n = nPlus - n;
+    }
+    return [n, nPlus, n * nPlus === prod];
+}
+
+// Solution 3
+
+function productFib(prod) {
+    let [a, b] = [0, 1];
+    while (a * b < prod) [a, b] = [b, a + b];
+    return [a, b, a * b === prod];
+}
+
