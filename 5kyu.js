@@ -424,3 +424,44 @@ function productFib(prod) {
     return [a, b, a * b === prod];
 }
 
+
+// 5kyu Pete, the baker
+
+// Pete likes to bake some cakes.He has some recipes and ingredients.Unfortunately he is not good in maths.Can you help him to find out, how many cakes he could bake considering his recipes ?
+
+//     Write a function cakes(), which takes the recipe(object) and the available ingredients(also an object) and returns the maximum number of cakes Pete can bake(integer).For simplicity there are no units for the amounts(e.g. 1 lb of flour or 200 g of sugar are simply 1 or 200).Ingredients that are not present in the objects, can be considered as 0.
+
+// Examples:
+
+// // must return 2
+// cakes({ flour: 500, sugar: 200, eggs: 1 }, { flour: 1200, sugar: 1200, eggs: 5, milk: 200 });
+// // must return 0
+// cakes({ apples: 3, flour: 300, sugar: 150, milk: 100, oil: 100 }, { sugar: 500, flour: 2000, milk: 2000 }); 
+
+// Solution
+
+function cakes(recipe, available) {
+    let arr = []
+    let doable = true;
+    let count = 0;
+    for (item in available) {
+        for (item2 in recipe) {
+            if (item2 == item) {
+                count++;
+
+                if (available[item] >= recipe[item2]) {
+                    arr.push(available[item] / recipe[item2])
+                } else {
+                    doable = false
+                }
+            }
+        }
+    }
+
+    if ((Object.keys(recipe).length == count) && doable) {
+        return Math.floor(Math.min(...arr))
+    }
+    return 0
+
+}
+
