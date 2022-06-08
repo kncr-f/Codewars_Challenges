@@ -554,3 +554,53 @@ function orderWeight(str) {
         return digitSum(a) - digitSum(b) || a.localeCompare(b);
     }).join(' ');
 }
+
+// 5kyu The Hashtag Generator
+
+// The marketing team is spending way too much time typing in hashtags.
+//     Let's help them with our own Hashtag Generator!
+
+// Here's the deal:
+
+// It must start with a hashtag(#).
+// All words must have their first letter capitalized.
+// If the final result is longer than 140 chars it must return false.
+// If the input or the result is an empty string it must return false.
+//     Examples
+// " Hello there thanks for trying my Kata"  => "#HelloThereThanksForTryingMyKata"
+// "    Hello     World   "                  => "#HelloWorld"
+// ""                                        => false
+
+// Solution
+
+function generateHashtag(str) {
+    if (str == "" || str.trim().length == 0) {
+        return false
+    }
+    let aa = str.trim().split(" ")
+
+    for (let i = 0; i < aa.length; i++) {
+
+        if (aa[i]) {
+            aa[i] = aa[i][0].toUpperCase() + aa[i].slice(1)
+        }
+    }
+    const result = aa.join("").replace(/^/, '#')
+
+    if (!result || result.length > 140) {
+        return false
+    }
+
+    return result
+}
+
+// Solution 2
+
+function generateHashtag(str) {
+    if (!str || str.length < 1) return false;
+
+    var r = '#' + str.split(' ').map(function (el) {
+        return el.charAt(0).toUpperCase() + el.slice(1).toLowerCase();
+    }).join('');
+    return r.length > 140 ? false : r;
+}
